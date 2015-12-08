@@ -2,4 +2,7 @@
 
 Satori.Router.map(function() {
   // this.resource('posts');
+  this.route('lists', {
+    path: '/'
+  });
 });
