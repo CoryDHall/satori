@@ -11,11 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205030756) do
+ActiveRecord::Schema.define(version: 20151208002334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
+
+  create_table "items", force: :cascade do |t|
+    t.text     "name",                    null: false
+    t.integer  "user_id"
+    t.integer  "list_id"
+    t.jsonb    "data",       default: {}, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "items", ["data"], name: "index_items_on_data", using: :gin
+  add_index "items", ["list_id"], name: "index_items_on_list_id", using: :btree
+  add_index "items", ["name"], name: "index_items_on_name", using: :btree
+  add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
+
+  create_table "lists", force: :cascade do |t|
+    t.text     "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.jsonb    "config",      default: {}, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "lists", ["config"], name: "index_lists_on_config", using: :gin
+  add_index "lists", ["title"], name: "index_lists_on_title", using: :btree
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.citext   "name",                                null: false
@@ -39,4 +66,7 @@ ActiveRecord::Schema.define(version: 20151205030756) do
   add_index "users", ["prefs"], name: "index_users_on_prefs", using: :gin
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "items", "lists"
+  add_foreign_key "items", "users"
+  add_foreign_key "lists", "users"
 end
