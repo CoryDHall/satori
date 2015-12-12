@@ -1,5 +1,2 @@
-(function () {
-  Satori.ListsController = Ember.Controller.extend({
-  });
-  // Satori.ListController = Ember.ObjectController.extend({});
-})();
+Satori.ListsController = Ember.Controller.extend({
+});

@@ -1,11 +1,11 @@
-(function () {
-  Satori.List = DS.Model.extend({
-    title: DS.attr('string'),
-    description: DS.attr('string'),
-    author: DS.attr('string'),
-    items: DS.attr(),
-  });
+Satori.List = DS.Model.extend({
+  title: DS.attr('string'),
+  description: DS.attr('string'),
+  author: DS.attr('string'),
+  items: DS.attr(),
+});
 
+(function () {
   Satori.List.FIXTURES = [
  {
    id: 1,
