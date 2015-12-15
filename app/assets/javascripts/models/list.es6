@@ -1,9 +1,8 @@
 Satori.List = DS.Model.extend({
   title: DS.attr('string'),
-  description: DS.attr('string'),
-  // author: DS.attr('string'),
   items: DS.attr(),
-  config: DS.attr()
+  config: DS.attr(),
+  creator: DS.attr(),
 });
 
 (function () {

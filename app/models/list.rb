@@ -7,5 +7,12 @@ class List < ActiveRecord::Base
 
   validates :title, presence: true
 
-  attr_passthrough :title
+  attr_passthrough :title, :creator
+
+  before_save :ensure_creator
+
+  def ensure_creator
+    self.creator = user.username
+  end
+
 end

@@ -1,9 +1,15 @@
 <li class="list">
   <h3>{{list.title}}</h3>
-  {{#if list.config.author}}
-  <h5>{{list.config.author}}</h5>
-  {{/if}}
+  <h5>{{list.creator}}</h5>
   <p>
     {{list.description}}
   </p>
+  <ul>
+    {{#each list.items as |item| }}
+      <li>{{item.title}}</li>
+    {{/each}}
+    <li><form class="" action="index.html" method="post">
+      + [new-item-form]
+    </form></li>
+  </ul>
 </li>
