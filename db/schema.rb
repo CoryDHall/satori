@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215182326) do
+ActiveRecord::Schema.define(version: 20151215185129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
 
   create_table "items", force: :cascade do |t|
-    t.text     "name",                    null: false
     t.integer  "user_id"
     t.integer  "list_id"
     t.jsonb    "data",       default: {}, null: false
@@ -28,7 +27,6 @@ ActiveRecord::Schema.define(version: 20151215182326) do
 
   add_index "items", ["data"], name: "index_items_on_data", using: :gin
   add_index "items", ["list_id"], name: "index_items_on_list_id", using: :btree
-  add_index "items", ["name"], name: "index_items_on_name", using: :btree
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree
 
   create_table "lists", force: :cascade do |t|
