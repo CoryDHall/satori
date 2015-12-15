@@ -1,9 +1,8 @@
 class Api::ListsController < ApplicationController
-  respond_to :json
-  before_action :authenticate_user!
+  before_action :set_list, only: [:show]
 
   def index
-    @lists = current_user.lists
+    @lists = List.all.includes(:items)
     render json: @lists
   end
 
@@ -12,9 +11,17 @@ class Api::ListsController < ApplicationController
     render json: list
   end
 
+  def show
+    render json: @list
+  end
+
   private
 
   def list_params
-    params.require(:list).permit(:title, :description, config: [:author])
+    params.require(:list).permit(:title)
+  end
+
+  def set_list
+    @list = List.find(params[:id])
   end
 end

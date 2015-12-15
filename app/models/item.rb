@@ -5,8 +5,7 @@ class Item < ActiveRecord::Base
     class_name: "User",
     foreign_key: :user_id
 
-  belongs_to :list,
-    dependent: :destroy
+  belongs_to :list
 
   validates :title, :author, presence: true
 
