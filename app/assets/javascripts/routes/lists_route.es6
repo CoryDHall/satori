@@ -2,18 +2,11 @@
 
 Satori.ListsRoute = Ember.Route.extend({
   model () {
-    // this.store.createRecord('list', Satori.List.FIXTURES[0]).save();
-    // return Satori.List.FIXTURES; //
+    this.store.createRecord('list', Satori.List.FIXTURES[0]).save();
     var data = this.store.findAll('list');
     return data;
   },
-  afterModel (model, transition) {
-    // debugger
+  setupController (controller, lists) {
+    controller.set('model', lists);
   },
-  setupController (controller, list) {
-    controller.set('model', list);
-  },
-  // renderTemplate: function () {
-  //   this.render('lists');
-  // },
 });

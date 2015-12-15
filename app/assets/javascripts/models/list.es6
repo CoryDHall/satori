@@ -1,18 +1,20 @@
 Satori.List = DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
-  author: DS.attr('string'),
+  // author: DS.attr('string'),
   items: DS.attr(),
+  config: DS.attr()
 });
 
 (function () {
   Satori.List.FIXTURES = [
  {
-   id: 1,
+  //  id: 1,
    title: 'Learn Ember.js',
    description: 'hello world!',
-   author: 'admin',
-   items: []
+   config: {
+     author: 'admin',
+   },
  },
  {
    id: 2,

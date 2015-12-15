@@ -1,5 +1,8 @@
 <li class="list">
   <h3>{{list.title}}</h3>
+  {{#if list.config.author}}
+  <h5>{{list.config.author}}</h5>
+  {{/if}}
   <p>
     {{list.description}}
   </p>

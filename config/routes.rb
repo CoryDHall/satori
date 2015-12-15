@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   root to: 'static#index'
 
-  devise_for :users
 
-  resources :lists
+  devise_for :users
+  namespace :api do
+    resources :lists
+    resources :users
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
