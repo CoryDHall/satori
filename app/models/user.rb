@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :items
   validate :username_must_be_unique
+  validates :username, :password, presence: true
 
   attr_passthrough :username, :password_digest, :session_token
 
