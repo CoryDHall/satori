@@ -3,9 +3,9 @@
 Satori.Router.map(function() {
   // this.resource('posts');
   this.route('lists', {
-    path: 'lists'
-  });
-  this.route('session', {
     path: ''
   });
+  // this.route('session', {
+  //   path: ''
+  // });
 });

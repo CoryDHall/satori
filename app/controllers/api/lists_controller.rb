@@ -7,7 +7,8 @@ class Api::ListsController < ApplicationController
   end
 
   def create
-    list = current_user.lists.new(list_params)
+    # list = current_user.lists.new(list_params)
+    list = List.new(list_params)
     render json: list
   end
 
