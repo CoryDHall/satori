@@ -1,4 +1,14 @@
 class Item < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :list
+  include Findable
+
+  belongs_to :author,
+    class_name: "User",
+    foreign_key: :user_id
+
+  belongs_to :list,
+    dependent: :destroy
+
+  validates :title, :author, presence: true
+
+  attr_passthrough :title
 end

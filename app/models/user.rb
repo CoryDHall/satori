@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   include Findable
   has_many :lists
-  has_many :items
+
+  has_many :authored_items,
+    class_name: "Item",
+    foreign_key: :user_id,
+    primary_key: :id
+    
   validate :username_must_be_unique
   validates :username, :password, presence: true
 
