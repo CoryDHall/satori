@@ -1,11 +1,7 @@
 // For more information see: http://emberjs.com/guides/routing/
 
 Satori.Router.map(function() {
-  // this.resource('posts');
   this.route('lists', {
-    path: ''
+    path: 'lists'
   });
-  // this.route('session', {
-  //   path: ''
-  // });
 });
