@@ -8,8 +8,9 @@
     {{#each list.items as |item| }}
       <li>{{item.title}}</li>
     {{/each}}
+    {{#unless session.newRecord}}
     <li><form class="" action="index.html" method="post">
       + [new-item-form]
     </form></li>
+    {{/unless}}
   </ul>
-</li>

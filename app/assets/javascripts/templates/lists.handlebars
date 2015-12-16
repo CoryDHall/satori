@@ -1,8 +1,12 @@
 <ul>
 {{#each model as |list|}}
-  {{list-index list=list}}
+  {{list-index list=list session=session}}
 {{/each}}
-  <li><form class="" action="index.html" method="post">
+  <li>
+    {{#unless session.newRecord}}
+    <form class="" action="index.html" method="post">
     + New List Form
-  </form></li>
+    </form>
+    {{/unless}}
+  </li>
 </ul>
